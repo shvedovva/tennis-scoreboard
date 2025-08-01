@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <display-name>Tennis Scoreboard</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+<!--    <servlet>-->
+<!--        <servlet-name>HomeServlet</servlet-name>-->
+<!--        <servlet-class>com.example.controller.HomeServlet</servlet-class>-->
+<!--    </servlet>-->
+
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>HomeServlet</servlet-name>-->
+<!--        <url-pattern>/</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+<!--    <servlet>-->
+<!--        <servlet-name>NewMatchServlet</servlet-name>-->
+<!--        <servlet-class>com.example.controller.NewMatchServlet</servlet-class>-->
+<!--    </servlet>-->
+
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>NewMatchServlet</servlet-name>-->
+<!--        <url-pattern>/new-match</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+<!--    <servlet>-->
+<!--        <servlet-name>MatchScoreServlet</servlet-name>-->
+<!--        <servlet-class>com.example.controller.MatchScoreServlet</servlet-class>-->
+<!--    </servlet>-->
+
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>MatchScoreServlet</servlet-name>-->
+<!--        <url-pattern>/match-score</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+<!--    <servlet>-->
+<!--        <servlet-name>MatchesServlet</servlet-name>-->
+<!--        <servlet-class>com.example.controller.MatchesServlet</servlet-class>-->
+<!--    </servlet>-->
+
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>MatchesServlet</servlet-name>-->
+<!--        <url-pattern>/matches</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+    <listener>
+        <listener-class>com.example.util.AppInitializer</listener-class>
+    </listener>
+</web-app>
