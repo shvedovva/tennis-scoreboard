@@ -42,4 +42,14 @@ public class PlayerDao {
             throw new RuntimeException("Error finding player by name", e);
         }
     }
+
+    public Player findOrCreate(String name){
+        Optional<Player> existingPlayer = findByName(name);
+        if (existingPlayer.isPresent()){
+            return existingPlayer.get();
+        }
+
+        Player newPlayer = new Player(name);
+        return save(newPlayer);
+    }
 }

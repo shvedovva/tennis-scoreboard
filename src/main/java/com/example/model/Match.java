@@ -1,6 +1,9 @@
 package com.example.model;
 
 import jakarta.persistence.*;
+
+import java.util.Objects;
+
 //Таблица завершенных матчей
 @Entity
 @Table(name = "Matches")
@@ -10,24 +13,25 @@ public class Match {
     @Column(name = "ID")
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "Player1", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "player1", nullable = false)
     private Player player1;
 
-    @ManyToOne
-    @JoinColumn(name = "Player2", nullable = false)
+    @ManyToOne(fetch =  FetchType.EAGER)
+    @JoinColumn(name = "player2", nullable = false)
     private Player player2;
 
-    @ManyToOne
-    @JoinColumn(name = "Winner")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "winner", nullable = false)
     private Player winner;
 
     public Match() {
     }
 
-    public Match(Player player1, Player player2) {
+    public Match(Player player1, Player player2, Player winner) {
         this.player1 = player1;
         this.player2 = player2;
+        this.winner = winner;
     }
 
     public Integer getId() {
@@ -60,6 +64,19 @@ public class Match {
 
     public void setWinner(Player winner) {
         this.winner = winner;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Match match = (Match) o;
+        return Objects.equals(id, match.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
     @Override
     public String toString() {
