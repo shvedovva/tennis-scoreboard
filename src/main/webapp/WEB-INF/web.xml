@@ -28,7 +28,7 @@
 
 <!--    <servlet-mapping>-->
 <!--        <servlet-name>NewMatchServlet</servlet-name>-->
-<!--        <url-pattern>/new-match</url-pattern>-->
+<!--        <url-pattern>/new-match.jsp</url-pattern>-->
 <!--    </servlet-mapping>-->
 
 <!--    <servlet>-->
