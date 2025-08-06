@@ -51,7 +51,10 @@ public class NewMatchServlet extends BaseServlet{
             MatchScore matchScore = new MatchScore(player1, player2);
             ongoingMatchesService.addMatch(matchScore);
 
-            redirectTo(resp,  "/match-score?uuid=" + matchScore.getMatchId());
+            //redirectTo(resp,  "/tennis-scoreboard/match-score?uuid=" + matchScore.getMatchId());
+            //resp.sendRedirect(req.getContextPath() + "/match-score?uuid=" + matchScore.getMatchId());
+
+            redirectTo(resp, req.getContextPath() + "/match-score?uuid=" + matchScore.getMatchId());
         } catch (Exception e){
             req.setAttribute("error", "Error creating match: " + e.getMessage());
             forwardToJsp(req, resp, "/WEB-INF/views/new-match.jsp");
