@@ -46,6 +46,7 @@ public class MatchScoreServlet extends BaseServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("entry");
         String uuidStr = getStringParameter(req, "uuid");
         String winnerIdStr = getStringParameter(req, "winnerId");
 
