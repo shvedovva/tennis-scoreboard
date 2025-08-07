@@ -22,7 +22,7 @@ public class MatchScoreCalculationService {
         if (isPlayer1) {
             matchScore.setPlayer1Points(matchScore.getPlayer1Points() + 1);
         } else {
-            matchScore.setPlayer2Games(matchScore.getPlayer2Games() + 1);
+            matchScore.setPlayer2Points(matchScore.getPlayer2Points() + 1);
         }
 
         // Проверяем, выиграл ли кто-то гейм
@@ -34,8 +34,8 @@ public class MatchScoreCalculationService {
             }
 
             // Сбрасываем очки
-            matchScore.setPlayer1Games(0);
-            matchScore.setPlayer2Games(0);
+            matchScore.setPlayer1Points(0);
+            matchScore.setPlayer2Points(0);
 
             // Проверяем, выиграл ли кто-то сет
             if (isSetWon(matchScore)) {
