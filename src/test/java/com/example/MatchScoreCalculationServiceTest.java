@@ -108,6 +108,35 @@ public class MatchScoreCalculationServiceTest {
     }
 
     @Test
+    void testTiebreakAutoStart6_6(){
+//        for (int i = 0; i < 5; i++){
+//            matchScore.setPlayer1Points(3);
+//            matchScore.setPlayer2Points(0);
+//            service.addPoint(matchScore, player1);
+//        }
+//
+//        for (int i = 0; i < 5; i++) {
+//            matchScore.setPlayer1Points(0);
+//            matchScore.setPlayer2Points(3);
+//            service.addPoint(matchScore, player2);
+//        }
+
+        matchScore.setPlayer1Games(6);
+        matchScore.setPlayer2Games(6);
+        matchScore.setTiebreak(true);
+        matchScore.setPlayer1Points(3);
+        matchScore.setPlayer2Points(0);
+        service.addPoint(matchScore, player1);
+
+        assertTrue(matchScore.isTiebreak());
+        assertEquals(1, matchScore.getPlayer1TiebreakPoints());
+        assertEquals(0, matchScore.getPlayer2TiebreakPoints());
+        assertEquals("1", matchScore.getPlayer1PointsDisplay());
+        assertEquals("0", matchScore.getPlayer2PointsDisplay());
+    }
+
+
+    @Test
     void testTiebreakWin7_0(){
         matchScore.setPlayer1Games(6);
         matchScore.setPlayer2Games(6);
