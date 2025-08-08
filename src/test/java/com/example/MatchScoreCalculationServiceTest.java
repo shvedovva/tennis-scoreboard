@@ -113,7 +113,7 @@ public class MatchScoreCalculationServiceTest {
         matchScore.setPlayer2Games(6);
         matchScore.setTiebreak(true);
         matchScore.setPlayer1TiebreakPoints(6);
-        matchScore.setPlayer1TiebreakPoints(0);
+        matchScore.setPlayer2TiebreakPoints(0);
 
         service.addPoint(matchScore, player1);
 
@@ -126,6 +126,37 @@ public class MatchScoreCalculationServiceTest {
         assertEquals(0, matchScore.getPlayer2TiebreakPoints());
         assertFalse(matchScore.isFinished());
 
+    }
+
+    @Test
+    void testTiebreakWin8_6(){
+        matchScore.setPlayer1Games(6);
+        matchScore.setPlayer2Games(6);
+        matchScore.setTiebreak(true);
+        matchScore.setPlayer1TiebreakPoints(7);
+        matchScore.setPlayer2TiebreakPoints(6);
+        service.addPoint(matchScore, player1);
+
+        assertFalse(matchScore.isTiebreak());
+        assertEquals(1, matchScore.getPlayer1Sets());
+        assertEquals(0, matchScore.getPlayer2Sets());
+        assertFalse(matchScore.isFinished());
+    }
+
+    @Test
+    void testTiebreakInitialization() {
+        // Устанавливаем счет 6-6 в геймах
+        matchScore.setPlayer1Games(6);
+        matchScore.setPlayer2Games(6);
+        matchScore.setPlayer1Points(3); // 40
+        matchScore.setPlayer2Points(0);
+
+        service.addPoint(matchScore, player1);
+
+        assertTrue(matchScore.isTiebreak());
+        assertEquals(1, matchScore.getPlayer1TiebreakPoints());
+        assertEquals(0, matchScore.getPlayer1Points()); // Очки обычного гейма сброшены
+        assertEquals(0, matchScore.getPlayer2Points());
     }
 
 

@@ -9,6 +9,9 @@ public class MatchScoreCalculationService {
         if (matchScore.isFinished()) {
             return;
         }
+        if (!matchScore.isTiebreak() && isTiebreakNeeded(matchScore)){
+            matchScore.setTiebreak(true);
+        }
         if (matchScore.isTiebreak()) {
             addTiebreakPoint(matchScore, player);
         } else {
@@ -18,6 +21,12 @@ public class MatchScoreCalculationService {
 
     private void addRegularPoint(MatchScore matchScore, Player player) {
         boolean isPlayer1 = player.equals(matchScore.getPlayer1());
+//          перенос логики проверки в метод addPoint
+//        if (isTiebreakNeeded(matchScore)){
+//            matchScore.setTiebreak(true);
+//            addTiebreakPoint(matchScore, player);
+//            return;
+//        }
 
         if (isPlayer1) {
             matchScore.setPlayer1Points(matchScore.getPlayer1Points() + 1);
@@ -61,18 +70,19 @@ public class MatchScoreCalculationService {
     private void addTiebreakPoint(MatchScore matchScore, Player player) {
         boolean isPlayer1 = player.equals(matchScore.getPlayer1());
 
+        // Добавляем очко в тай-брейке
         if (isPlayer1) {
             matchScore.setPlayer1TiebreakPoints(matchScore.getPlayer1TiebreakPoints() + 1);
         } else {
             matchScore.setPlayer2TiebreakPoints(matchScore.getPlayer2TiebreakPoints() + 1);
         }
-
+        // Проверяем, выиграл ли кто-то тай-брейк
         if (isTiebreakWon(matchScore)) {
             if (isPlayer1) {
-                matchScore.setPlayer1Games(matchScore.getPlayer1Games() + 1);
+//                matchScore.setPlayer1Games(matchScore.getPlayer1Games() + 1);
                 matchScore.setPlayer1Sets(matchScore.getPlayer1Sets() + 1);
             } else {
-                matchScore.setPlayer2Games(matchScore.getPlayer2Games() + 1);
+//                matchScore.setPlayer2Games(matchScore.getPlayer2Games() + 1);
                 matchScore.setPlayer2Sets(matchScore.getPlayer2Sets() + 1);
             }
 
