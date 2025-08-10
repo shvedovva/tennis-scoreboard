@@ -11,6 +11,9 @@ public class MatchScoreCalculationService {
         }
         if (!matchScore.isTiebreak() && isTiebreakNeeded(matchScore)){
             matchScore.setTiebreak(true);
+            matchScore.setPlayer1Points(0);
+            matchScore.setPlayer2Points(0);
+//            addTiebreakPoint(matchScore, player);
         }
         if (matchScore.isTiebreak()) {
             addTiebreakPoint(matchScore, player);
@@ -79,10 +82,10 @@ public class MatchScoreCalculationService {
         // Проверяем, выиграл ли кто-то тай-брейк
         if (isTiebreakWon(matchScore)) {
             if (isPlayer1) {
-//                matchScore.setPlayer1Games(matchScore.getPlayer1Games() + 1);
+                matchScore.setPlayer1Games(matchScore.getPlayer1Games() + 1);
                 matchScore.setPlayer1Sets(matchScore.getPlayer1Sets() + 1);
             } else {
-//                matchScore.setPlayer2Games(matchScore.getPlayer2Games() + 1);
+                matchScore.setPlayer2Games(matchScore.getPlayer2Games() + 1);
                 matchScore.setPlayer2Sets(matchScore.getPlayer2Sets() + 1);
             }
 
