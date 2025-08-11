@@ -188,5 +188,21 @@ public class MatchScoreCalculationServiceTest {
         assertEquals(0, matchScore.getPlayer2Points());
     }
 
+    @Test
+    void testTieBreakWin8_6() {
+        matchScore.setPlayer1Games(6);
+        matchScore.setPlayer2Games(6);
+        matchScore.setTiebreak(true);
+        matchScore.setPlayer1TiebreakPoints(7);
+        matchScore.setPlayer1TiebreakPoints(6);
+
+        service.addPoint(matchScore, player1);
+
+        assertFalse(matchScore.isTiebreak());
+        assertEquals(1, matchScore.getPlayer1Sets());
+        assertEquals(0, matchScore.getPlayer2Sets());
+        assertFalse(matchScore.isFinished());
+    }
+
 
 }
